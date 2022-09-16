@@ -37,7 +37,11 @@ With our dependencies set up, we can now initialize an `ApolloClient` instance.
 In `index.js`, let's first import the symbols we need from `@apollo/client`:
 
 ```js title="index.js"
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClient } from '@apollo/client/core'
+import { ApolloLink, HttpLink, split, concat } from '@apollo/client/core'
+import { onError } from '@apollo/client/link/error'
+import { InMemoryCache, defaultDataIdFromObject } from '@apollo/client/cache'
+import { gql } from "@apollo/client/core"
 ```
 
 Next we'll initialize `ApolloClient`, passing its constructor a configuration object with the `uri` and `cache` fields:
